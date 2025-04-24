@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Car Options</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <h1>My Car Options</h1>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="file-input-wrapper">
+      <input type="file" id="fileInput" accept="application/json" hidden />
+      <button id="fileBtn">Upload JSON</button>
+      <span id="fileName">No file chosen</span>
+    </div>
+
+    <!-- Top‐level tabs (Makes) -->
+    <nav id="tabs" class="tabs"></nav>
+    <!-- Contents for each make -->
+    <section id="tabContents" class="contents"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

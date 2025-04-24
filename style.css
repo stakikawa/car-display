@@ -1,0 +1,295 @@
+:root {
+    --primary: #1a73e8;
+    --primary-dark: #135abe;
+    --bg: #f5f7fa;
+    --surface: #ffffff;
+    --text: #444444;
+    --shadow: rgba(0, 0, 0, 0.08);
+    --radius: 0.5rem;
+  }
+  
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  
+  .navbar {
+    background: var(--surface);
+    box-shadow: 0 2px 4px var(--shadow);
+  }
+  .navbar .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  .navbar h1 {
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  .file-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  #fileBtn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+  #fileBtn:hover { background: var(--primary-dark); }
+  #fileName { font-size: 0.9rem; color: #666; }
+  
+  /* Top‐level tabs */
+  .tabs {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.5rem;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .tabs button {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+  .tabs button.active {
+    color: var(--primary);
+  }
+  .tabs button.active::after {
+    content: '';
+    display: block;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+    margin-top: 0.25rem;
+  }
+  
+  /* Sub‐tabs inside each make */
+  .sub-tabs {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--primary-dark);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1rem;
+  }
+  .sub-tabs button {
+    background: none;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+  .sub-tabs button.active {
+    color: var(--primary-dark);
+  }
+  .sub-tabs button.active::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: var(--primary-dark);
+    border-radius: 2px;
+    margin-top: 0.2rem;
+  }
+  
+  .contents .tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+  }
+  .contents .tab-content.active {
+    display: block;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  
+  .card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px var(--shadow);
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  
+  /* Updated slideshow for consistent aspect ratio and alignment */
+  .slideshow {
+    position: relative;
+    width: 100%;
+    /* 16:9 aspect ratio */
+    padding-top: 56.25%;
+    overflow: hidden;
+  }
+  
+  .slideshow img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .slideshow img.active {
+    opacity: 1;
+  }
+  
+  .arrows {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .arrows button {
+    pointer-events: all;
+    background: rgba(0,0,0,0.4);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .arrows button:hover { background: rgba(0,0,0,0.6); }
+  
+  /* Dots overlay */
+  .dots {
+    margin-top: -1.5rem;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 0.5rem 0;
+    background: rgba(255,255,255,0.8);
+  }
+  .dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .dots span.active {
+    background: var(--primary);
+  }
+  
+  .details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .details ul {
+    list-style: disc inside;
+  }
+  .details p {
+    font-weight: 500;
+  }
+  
+  @media (max-width: 600px) {
+    .details {
+      grid-template-columns: 1fr;
+    }
+    .tabs button,
+    .sub-tabs button {
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Pricing grid: 2 columns, tight gap */
+.pricing {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.25rem 1rem;
+    margin-bottom: 1rem;
+  }
+  .price-item {
+    display: flex;
+    justify-content: space-between;
+  }
+  .price-item .label {
+    font-weight: 500;
+  }
+  .price-item .value {
+    font-weight: 700;
+  }
+  
+  /* Year styling */
+  .details p.year {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Notes panel styling */
+.notes-panel {
+    background: #fffefc;
+    border-left: 4px solid var(--primary-dark);
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .notes-panel h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  .notes-panel p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  
+  /* Dealership link styling */
+  .dealership-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 500;
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .dealership-link:hover {
+    color: var(--primary-dark);
+  }
+  
